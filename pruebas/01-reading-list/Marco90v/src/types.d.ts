@@ -18,13 +18,11 @@ interface book {
 
 interface library {
   library: book[],
+  reading: book[]
   filter:string
 
 }
-interface initial {
-  state:library,
-  dispatch: React.Dispatch<Actions>
-}
+
 
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
