@@ -1,9 +1,13 @@
 export enum Types {
     setInitialData = "setInitialData",
-    All = "All",
+    All = "Todos",
     changeCategoryFilter = "changeCategoryFilter",
     AddBookReading = "AddBookReading",
-    RemoveBookReading = "RemoveBookReading"
+    RemoveBookReading = "RemoveBookReading",
+    ChangeView = "ChangeView",
+    ViewBooks = "Books",
+    ViewReading = "Reading",
+    ChangeNumbersPages = "ChangeNumbersPages"
 }
 
 export enum Status {
@@ -11,4 +15,8 @@ export enum Status {
     loading = "loading",
     completed = "completed",
     error = "error"
+}
+
+export enum Texto {
+    Todos = "Todos",
 }

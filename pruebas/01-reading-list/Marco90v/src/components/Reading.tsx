@@ -11,14 +11,18 @@ function Reading() {
     }
 
     return(
-        <ul className="overflow-auto max-h-[93vh]" >
+        // <section>
+        //     <h2>Leyendo</h2>
+            
+        // </section>
+        <ul className="flex flex-wrap justify-center gap-8 p-8 overflow-auto max-h-[85vh] min-w-full max-w-5xl" >
             {
                 state.reading.map(item=>{
                     const { title, author, cover, ISBN, genre, pages, synopsis, year } = item.book
 
                     return(
                         <li key={ISBN}
-                            className="group/item cursor-pointer relative overflow-hidden hover:>div>top-0"
+                            className="group/item hover:scale-110 hover:z-10 hover:rounded-none hover:shadow-2xl hover:shadow-black cursor-pointer relative overflow-hidden max-w-48 max-h-72 rounded-xl transition-all duration-500 shadow-md"
                             onClick={()=>removeBookReading(item)}
                         >
                             <img src={cover} alt={title} loading="lazy"

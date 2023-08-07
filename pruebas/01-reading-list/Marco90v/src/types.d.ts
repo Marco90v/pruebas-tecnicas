@@ -13,14 +13,22 @@ interface book {
         "year": number,
         "ISBN": `${string}-${string}`,
         "author": author
-    }
+    },
+    "reading"?:boolean
+}
+
+interface genre {
+  genre:string,
+  quantity: number
 }
 
 interface library {
+  genre:genre[],
   library: book[],
-  reading: book[]
-  filter:string
-
+  reading: book[],
+  filter:string,
+  view:string,
+  numberPages:number
 }
 
 
