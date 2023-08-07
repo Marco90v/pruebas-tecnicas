@@ -7,7 +7,8 @@ export enum Types {
     ChangeView = "ChangeView",
     ViewBooks = "Books",
     ViewReading = "Reading",
-    ChangeNumbersPages = "ChangeNumbersPages"
+    ChangeNumbersPages = "ChangeNumbersPages",
+    UpdateReading = "UpdateReading",
 }
 
 export enum Status {
@@ -19,4 +20,17 @@ export enum Status {
 
 export enum Texto {
     Todos = "Todos",
+    TextLibrosButton = "Libros",
+    TextLecturaButton = "Lectura",
+    BooksAvailable = "Libros disponibles",
+    BooksReading = "Libros leyendo"
+}
+
+export enum Storage {
+    fav = "fav"
+}
+
+export enum ActionFunction {
+    BooksAvailable = "BooksAvailable",
+    BooksReading = "BooksReading"
 }

@@ -1,5 +1,7 @@
 import { createContext, useReducer } from "react";
-import { Texto, Types } from "../const";
+import { Types } from "../const";
+import { addLocalStorage, getLocalStorage } from "../utils/storage";
+import { getCategorys, getTotalBooks } from "../utils/books";
 
 type Payload = {
     [Types.setInitialData]: {
@@ -20,6 +22,9 @@ type Payload = {
     };
     [Types.ChangeNumbersPages]:{
         numberPages: number
+    };
+    [Types.UpdateReading]:{
+        reading: book[]
     }
 };
 type Actions = ActionMap<Payload>[keyof ActionMap<Payload>];
@@ -27,37 +32,15 @@ type Actions = ActionMap<Payload>[keyof ActionMap<Payload>];
 interface initial {
     state:library,
     dispatch: React.Dispatch<Actions>
-  }
+}
 
 const initialState:library = {
     genre:[],
     library: [],
-    reading: [],
+    reading: getLocalStorage(),
     filter:Types.All,
     view:Types.ViewBooks,
     numberPages:100
-}
-
-const getCategorys = (prev:genre[],next:book):genre[] => {
-    const exist = prev.find( ({genre}:genre) => genre === next.book.genre)
-    if(!exist){
-        prev.push({
-            genre: next.book.genre,
-            quantity:1
-        })
-    } else {
-        return prev.map( g => {
-            return g.genre=== next.book.genre ? { ...g, quantity:g.quantity+1 } : g
-        })
-    }
-    return prev
-}
-
-const setTotalBooks = (books:book[]):genre => {
-    return {
-        genre:Texto.Todos,
-        quantity:books.length
-    }
 }
 
 const Context = createContext<initial>({state:initialState,  dispatch:()=>null});
@@ -68,7 +51,7 @@ function reducer (state:library, action:Actions):library{
             return {
                 ...state,
                 ...action.payload,
-                genre: action.payload.library.reduce(getCategorys,[setTotalBooks(action.payload.library)])
+                genre: action.payload.library.reduce(getCategorys,[getTotalBooks(action.payload.library)])
             }
         case Types.changeCategoryFilter:
             return { ...state, ...action.payload }
@@ -79,16 +62,28 @@ function reducer (state:library, action:Actions):library{
                 ...state,
                 ...action.payload
             }
-        case Types.AddBookReading:
+        case Types.AddBookReading: {
+            const addReading = [...state.reading, action.payload.reading]
+            addLocalStorage(addReading)
+            return{
+                ...state,
+                reading:addReading,
+            }
+        }
+        case Types.RemoveBookReading: {
+            const removeReading = state.reading.filter( item=> !(item.book.ISBN===action.payload.reading.book.ISBN) )
+            addLocalStorage(removeReading)
             return {
                 ...state,
-                reading:[...state.reading, action.payload.reading],
+                reading: removeReading
             }
-        case Types.RemoveBookReading:
+        }
+        case Types.UpdateReading:{
             return {
                 ...state,
-                reading: state.reading.filter(item=> !(item.book.ISBN===action.payload.reading.book.ISBN) )
+                reading: action.payload.reading
             }
+        }
         default:
             return state
     }

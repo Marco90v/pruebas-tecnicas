@@ -1,9 +1,10 @@
 import { useContext, useEffect } from 'react';
 import useFetch from './hooks/useFetch'
 import { Context } from './Context/Global';
-import { Status, Types } from './const';
+import { Status, Storage, Types } from './const';
 import Sidebar from './components/Sidebar';
 import Books from './components/Books';
+import { getLocalStorage } from './utils/storage';
 
 function App() {
   // const [ data ] = useFetch('https://raw.githubusercontent.com/Marco90v/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
@@ -15,7 +16,22 @@ function App() {
         dispatch({type:Types.setInitialData, payload:data})
       } 
     }, [status, dispatch, data, state.library.length])
-  
+
+    useEffect(() => {
+      window.addEventListener('storage', event => {
+        updateReadingByEventStorage(event)
+      })
+      return () => {
+        window.removeEventListener('storage', updateReadingByEventStorage)
+      }
+    })
+    
+    const updateReadingByEventStorage = (event:StorageEvent) => {
+      if(event.key === Storage.fav){
+          const reading:book[] = getLocalStorage()
+          dispatch({type:Types.UpdateReading, payload:{reading}})
+      }
+    }  
   
   return (
     <main className='max-w-6xl m-auto my-8 grid grid-cols-6 bg-slate-100 rounded-md overflow-hidden shadow-lg border-2 border-gray-200'>
