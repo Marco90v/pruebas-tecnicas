@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .main {
+        @apply max-w-6xl max-h-[55rem] m-auto my-8 grid grid-cols-6 bg-slate-100 rounded-md overflow-hidden shadow-lg border-2 border-gray-200
+    }
+    .header{
+        @apply flex gap-12 justify-center text-center text-xl font-bold py-5 px-4 border-b-2 border-b-slate-200
+    }
+    .title {
+        @apply text-center py-6 border-b-2 border-b-slate-200 text-lg font-black text-slate-600
+    }
+    .btn-base {
+      @apply px-4 py-1 bg-slate-800 rounded-md hover:bg-slate-600 transition-all duration-300
+    }
+    .text-sidebar {
+        @apply  cursor-pointer pl-4 py-2 font-bold text-slate-500 transition-all duration-300 hover:bg-slate-300 hover:text-white
+    }
+    .badge-sidebar {
+        @apply text-[10px] inline-flex items-center justify-center px-1 ml-2 rounded-full text-blue-800 bg-blue-200
+    }
+    .card-details{
+        @apply group-hover/item:inset-0 group-hover/item:opacity-100  absolute top-full bottom-[-18rem] opacity-0 bg-white/80 p-2 flex flex-col gap-2 transition-all duration-500
+    }
+    .card-reading{
+        @apply before:w-10 before:h-16 before:border-red-500 before:border-b-transparent before:content-[''] before:absolute before:right-5 before:border-[1.3rem]
+    }
+    .card-not-reading{
+        @apply hover:scale-110 hover:z-10 hover:rounded-none hover:shadow-2xl hover:shadow-black transition-all duration-500
+    }
+    .card-details-reading{
+        @apply absolute top-0 bottom-0 left-0 right-0 bg-black opacity-50 transition-all duration-500
+    }
+    .card{
+        @apply cursor-pointer relative overflow-hidden max-w-[13rem] max-h-72 rounded-xl shadow-md
+    }
+    .content-cards{
+        @apply flex flex-wrap justify-center gap-8 my-4 py-4 overflow-auto max-h-[46rem] min-w-full max-w-5xl
+    }
+}

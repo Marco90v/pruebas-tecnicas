@@ -34,7 +34,7 @@ function App() {
     }  
   
   return (
-    <main className='max-w-6xl m-auto my-8 grid grid-cols-6 bg-slate-100 rounded-md overflow-hidden shadow-lg border-2 border-gray-200'>
+    <main className='main'>
       <Sidebar />
       <Books />
     </main>

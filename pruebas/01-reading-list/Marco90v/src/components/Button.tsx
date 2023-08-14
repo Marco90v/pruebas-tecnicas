@@ -20,7 +20,7 @@ function Button( { view, textButton }:props ) {
 
     return(
         <button
-            className= {`px-4 py-1 bg-slate-800 rounded-md hover:bg-slate-600 transition-all duration-300 ${getColorByView(view)}`}
+            className= {`btn-base ${getColorByView(view)}`}
             onClick={()=>handlerChangeView(view)}
         >
             {textButton}
