@@ -29,7 +29,7 @@ function Card({item, remove=false}:props) {
         >
             <img src={cover} alt={title} loading="lazy"
                 width={"196.22px"} height={"287.97px"}
-                className="max-w-[13rem] max-h-72" />
+                className="max-w-[13rem] max-h-72 bg-slate-400" />
             {
                 reading ? 
                     <div className="card-details-reading"></div>
