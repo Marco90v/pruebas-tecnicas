@@ -9,6 +9,7 @@ import Spinner from './components/Spinner';
 
 function App() {
   // const [ data ] = useFetch('https://raw.githubusercontent.com/Marco90v/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
+  document.title = 'Prueba 01 - Libreria';
   const { state, dispatch } = useContext(Context);
   const [ data, status ] = useFetch('https://raw.githubusercontent.com/Marco90v/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
     
