@@ -38,4 +38,6 @@ export enum ActionFunction {
 export enum StyleCss {
     ButtonTextActive = "text-green-400",
     ButtonTextInActive = "text-slate-200",
+    IsReading = "card-reading",
+    IsNotReading = "group/item card-not-reading",
 }

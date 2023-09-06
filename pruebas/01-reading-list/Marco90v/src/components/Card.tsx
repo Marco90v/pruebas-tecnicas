@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Context } from "../Context/Global";
-import { Types } from "../const";
+import { StyleCss, Types } from "../const";
 
 interface props {
     item: book,
@@ -12,7 +12,7 @@ function Card({item, remove=false}:props) {
     const { title, author, cover, ISBN, genre, pages, synopsis, year } = item.book
     const { reading } = item
 
-    const isReading = (reading: boolean | undefined):string => reading ? "card-reading" : "group/item card-not-reading"
+    const isReading = (reading: boolean | undefined):string => reading ? StyleCss.IsReading : StyleCss.IsNotReading
 
     const handlerBookReading = (item:book, remove:boolean) => {
         if(remove){
