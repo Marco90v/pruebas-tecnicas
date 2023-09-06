@@ -10,7 +10,7 @@ import Spinner from './components/Spinner';
 function App() {
   // const [ data ] = useFetch('https://raw.githubusercontent.com/Marco90v/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
   const { state, dispatch } = useContext(Context);
-  const [ data, status ] = useFetch('src/books.json');
+  const [ data, status ] = useFetch('https://raw.githubusercontent.com/Marco90v/pruebas-tecnicas/main/pruebas/01-reading-list/books.json');
     
   useEffect(() => {
     if (status === Status.completed && data && state.library.length === 0){
