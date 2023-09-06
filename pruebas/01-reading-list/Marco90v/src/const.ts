@@ -34,3 +34,8 @@ export enum ActionFunction {
     BooksAvailable = "BooksAvailable",
     BooksReading = "BooksReading"
 }
+
+export enum StyleCss {
+    ButtonTextActive = "text-green-400",
+    ButtonTextInActive = "text-slate-200",
+}

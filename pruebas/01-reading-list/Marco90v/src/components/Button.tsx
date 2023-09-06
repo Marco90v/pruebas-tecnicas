@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Texto, Types } from "../const"
+import { StyleCss, Texto, Types } from "../const"
 import { Context } from "../Context/Global";
 
 interface props {
@@ -11,7 +11,7 @@ function Button( { view, textButton }:props ) {
     const { state, dispatch } = useContext(Context);
 
     const getColorByView = (view:Types.ViewBooks | Types.ViewReading):string => {
-        return state.view === view ? "text-green-400" : "text-slate-200"
+        return state.view === view ? StyleCss.ButtonTextActive : StyleCss.ButtonTextInActive
     }
 
     const handlerChangeView = (view:Types.ViewBooks | Types.ViewReading) => {
