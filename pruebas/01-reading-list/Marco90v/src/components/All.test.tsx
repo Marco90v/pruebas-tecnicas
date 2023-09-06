@@ -2,7 +2,7 @@ import { describe, it, expect, afterEach } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent  from '@testing-library/user-event';
 import Button from './Button';
-import { Texto, Types } from '../const';
+import { StyleCss, Texto, Types } from '../const';
 import GlobalContext from '../Context/Global';
 
 describe('Test Component Button', () => {
@@ -23,9 +23,9 @@ describe('Test Component Button', () => {
         )
         const user = userEvent.setup();
         const boton = screen.getByRole("button", {name:Texto.TextLecturaButton})
-        expect(boton?.className).toContain("text-slate-200")
+        expect(boton?.className).toContain(StyleCss.ButtonTextInActive)
         await user.click(boton as HTMLButtonElement)
-        expect(boton?.className).toContain("text-green-400")
-        expect(boton?.className).not.toContain("text-slate-200")
+        expect(boton?.className).toContain(StyleCss.ButtonTextActive)
+        expect(boton?.className).not.toContain(StyleCss.ButtonTextInActive)
     })
 });
