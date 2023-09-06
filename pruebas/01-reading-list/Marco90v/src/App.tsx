@@ -1,4 +1,4 @@
-import { Suspense, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import useFetch from './hooks/useFetch'
 import { Context } from './Context/Global';
 import { Status, Storage, Types } from './const';
